@@ -19,7 +19,7 @@ else:
     )
     st.stop()
 
-MODEL = "gemini-1.5-flash"  # 안정적으로 지원되는 Gemini 모델 지정
+MODEL = "gemini-3.1-flash"  # 안정적으로 지원되는 Gemini 모델 지정
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={API_KEY}"
 
 # 2. 시스템 프롬프트 설정
