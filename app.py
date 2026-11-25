@@ -16,7 +16,7 @@ else:
     st.error("Streamlit Secrets에 'GEMINI_API_KEY'를 추가해 주세요.")
     st.stop()
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.8-flash"
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={GEMINI_API_KEY}"
 
 # 2. 시스템 프롬프트 설정
@@ -68,7 +68,6 @@ def get_youtube_video_url_no_api(song_query):
     try:
         response = requests.get(search_url, headers=headers, timeout=5)
         if response.status_code == 200:
-            # 유튜브 검색 결과 JSON 데이터 내의 첫 번째 videoId 추출 (11자리 영문/숫자/-/_)
             match = re.search(r'"videoId":"([a-zA-Z0-9_-]{11})"', response.text)
             if match:
                 video_id = match.group(1)
@@ -76,7 +75,6 @@ def get_youtube_video_url_no_api(song_query):
     except Exception:
         pass
 
-    # 추출 실패 시 개별 곡 검색 링크로 안전하게 대체
     return fallback_url, False
 
 
